@@ -1,0 +1,462 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einfach Chinesisch lernen</title>
+    <meta name="description"
+        content="Chinesisch lernen mit Geschichten & Audiobook. Offline verfügbar und ohne mühsames Vokabelpauken.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-main: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #8b5cf6;
+            --accent-glow: rgba(139, 92, 246, 0.4);
+            --card-bg: rgba(30, 41, 59, 0.7);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Abstract Gradient Background */
+        .bg-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(circle at top right, var(--accent-glow) 0%, transparent 40%),
+                radial-gradient(circle at bottom left, rgba(236, 72, 153, 0.15) 0%, transparent 40%);
+        }
+
+        nav {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: flex-end;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            color: var(--text-main);
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 5% 2rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .app-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 28px;
+            margin-bottom: 2rem;
+            box-shadow: 0 15px 35px rgba(139, 92, 246, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            display: inline-block;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, #f8fafc, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            max-width: 900px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin-bottom: 3rem;
+        }
+
+        .screenshot-showcase {
+            width: 100vw;
+            overflow-x: auto;
+            padding: 2rem 5% 4rem;
+            /* Hide scrollbar for cleaner look but keep functionality */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .screenshot-showcase::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrolling-wrapper {
+            display: flex;
+            gap: 1.5rem;
+            width: max-content;
+            margin: 0 auto;
+            padding: 1rem 0;
+        }
+
+        .screenshot {
+            height: clamp(350px, 60vh, 500px);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .screenshot:hover {
+            transform: scale(1.03) translateY(-5px);
+            border-color: rgba(139, 92, 246, 0.6);
+        }
+
+        .content-section {
+            max-width: 900px;
+            margin: 0 auto 5rem;
+            padding: 0 5%;
+            text-align: center;
+        }
+
+        .content-section p {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto 5rem auto;
+            padding: 0 5%;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: left;
+            backdrop-filter: blur(20px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .feature-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 0 auto 5rem;
+            padding: 0 5%;
+        }
+
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        .info-block {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 2.5rem;
+        }
+
+        .info-block h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .styled-list {
+            text-align: left;
+            list-style: none;
+        }
+
+        .styled-list li {
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 2rem;
+            line-height: 1.6;
+        }
+
+        .styled-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .styled-list li strong {
+            color: var(--text-main);
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 4rem 5%;
+            margin-bottom: 2rem;
+        }
+
+        .cta-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 3rem 5%;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-main);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-shapes"></div>
+
+    <nav>
+        <div style="display: flex; gap: 1.5rem;">
+            <a href="support.html">Support & Hilfe</a>
+            <a href="privacy.html">Datenschutz</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <img src="logo_icon.png" alt="App Logo" class="app-logo">
+            <div class="hero-badge">Einfach Chinesisch lernen</div>
+            <h1>Mit Geschichten & Audiobook</h1>
+            <p>Du möchtest Chinesisch lernen, aber herkömmliche Kurse sind trocken, zu teuer oder überfordern dich mit
+                tausend Vokabeln auf einmal? Dann ist diese App genau das Richtige für dich.</p>
+        </section>
+
+        <!-- Screenshot Horizontal Showcase -->
+        <section class="screenshot-showcase">
+            <div class="scrolling-wrapper">
+                <img src="1.png" alt="Screenshot 1" class="screenshot">
+                <img src="2.png" alt="Screenshot 2" class="screenshot">
+                <img src="3.png" alt="Screenshot 3" class="screenshot">
+                <img src="4.png" alt="Screenshot 4" class="screenshot">
+                <img src="5.png" alt="Screenshot 5" class="screenshot">
+                <img src="6.png" alt="Screenshot 6" class="screenshot">
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Die Idee: Lernen wie ein Kind</h2>
+            <p><strong>Durch Hören und Lesen spannender Geschichten.</strong> Jede der 27 Lektionen besteht aus einem
+                kurzen Kapitel, das du als Buchtext lesen und als professionelles Audiobook (erzeugt mit ElevenLabs,
+                natürlich klingende KI‑Stimme) anhören kannst.</p>
+            <p>So trainierst du gleichzeitig Leseverständnis, Aussprache und Hörverständnis – ohne mühsames
+                Vokabelpauken.</p>
+        </section>
+
+        <section class="features-grid">
+            <h2 class="section-title" style="grid-column: 1 / -1; text-align: center;">Was dich erwartet</h2>
+
+            <div class="feature-card">
+                <h3>📖 27 Kapitel</h3>
+                <p>In sich abgeschlossene Geschichten, die aufeinander aufbauen.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>🈴 3.000 Zeichen</h3>
+                <p>Von den häufigsten bis zu fortgeschrittenen Schriftzeichen, perfekt für die HSK‑Vorbereitung.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>📚 1.500 Vokabeln</h3>
+                <p>Alle mit Pinyin (inklusive Tonzeichen) und deutscher Übersetzung, organisch eingebettet in den
+                    Kontext.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>🎧 Buch & Audio</h3>
+                <p>Jederzeit umschaltbar. Lies den Text, hör dir die professionelle Vertonung an, oder mach beides
+                    gleichzeitig.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>✈️ 100% Offline</h3>
+                <p>Einmal installiert, funktioniert alles ohne Internet. Ideal für unterwegs, im Zug oder auf Reisen.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <h3>📊 Fortschritt</h3>
+                <p>Das Performance‑Dashboard zeigt dir gemeisterte Zeichen, gehörte Kapitel und wiederholte Vokabeln.
+                    Motivierend und transparent.</p>
+            </div>
+        </section>
+
+        <section class="info-grid">
+            <div class="info-block">
+                <h2>Warum diese App anders ist</h2>
+                <ul class="styled-list">
+                    <li><strong>Lernen mit Geschichten</strong>Kontext hilft dem Gehirn, Wörter dauerhaft zu speichern.
+                        Du lernst keine isolierten Vokabeln, sondern echte Sätze.</li>
+                    <li><strong>Perfekte Aussprache</strong>Hochwertige KI‑Stimme mit natürlicher Betonung. Garantiert
+                        kein Roboter‑Chinesisch.</li>
+                    <li><strong>Alles in einer App</strong>Kein Wechsel mehr zwischen Buch, Audio-Player und
+                        Vokabeltrainer. Alles ist nahtlos integriert.</li>
+                    <li><strong>Fortschrittskontrolle</strong>Das Dashboard zeigt dir genau, wo du stehst. So bleibst du
+                        dran und siehst deine Erfolge.</li>
+                </ul>
+            </div>
+
+            <div class="info-block">
+                <h2>Für wen geeignet?</h2>
+                <ul class="styled-list" style="margin-bottom: 2rem;">
+                    <li>Absolute Anfänger, die einen sanften Einstieg suchen.</li>
+                    <li>Wiedereinsteiger, die ihre Kenntnisse reaktivieren wollen.</li>
+                    <li>Lernende, die sich auf HSK 1–3 vorbereiten.</li>
+                    <li>Alle, die eine entspannte Lernmethode suchen – ohne Druck, aber mit klarem Fortschritt.</li>
+                </ul>
+
+                <h2>Technische Highlights</h2>
+                <ul class="styled-list">
+                    <li>Kein Internet nötig nach dem Download.</li>
+                    <li>Modernes, klares Design – keine überladene Oberfläche.</li>
+                    <li>Regelmäßige Updates mit neuen Geschichten.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <p class="cta-text">Starte noch heute deine Reise in die chinesische Sprache und Kultur. Mit <em>Einfach
+                    Chinesisch lernen</em> wird aus „Das ist zu schwer“ ein „Das kann ich!“</p>
+        </section>
+    </main>
+
+    <footer id="support">
+        <div class="footer-links">
+            <a href="support.html">Support & Hilfe</a>
+            <a href="privacy.html">Datenschutzerklärung</a>
+        </div>
+        <p>&copy; 2026 Einfach Chinesisch lernen. Alle Rechte vorbehalten.</p>
+    </footer>
+</body>
+
+</html>

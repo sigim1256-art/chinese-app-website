@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Einfach Chinesisch lernen</title>
+    <meta name="description" content="Support und Hilfe für die App Einfach Chinesisch lernen.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-main: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #8b5cf6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        nav {
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            color: var(--text-main);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 5%;
+            flex: 1;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(to right, #f8fafc, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        section {
+            margin-bottom: 2.5rem;
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 16px;
+        }
+
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #e2e8f0;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #ffffff;
+            padding: 0.75rem 1.75rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .contact-btn:hover {
+            background: #7c3aed;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .faq-item h3 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-item p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 5%;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html">&larr; Zurück zur Startseite</a>
+    </nav>
+
+    <main class="container">
+        <h1>Support & Hilfe</h1>
+
+        <section>
+            <h2>Wir sind hier, um zu helfen!</h2>
+            <p>Hast du Fragen zur App „Einfach Chinesisch lernen“, Feedback oder benötigst du technische Unterstützung?
+                Schreib uns ganz einfach eine E-Mail, wir kümmern uns so schnell wie möglich um dein Anliegen.</p>
+            <a href="mailto:info@@brantrix.com" class="contact-btn">E-Mail an den Support senden</a>
+        </section>
+
+        <section id="faq">
+            <h2>Häufig gestellte Fragen (FAQ)</h2>
+
+            <div class="faq-item">
+                <h3>Benötige ich eine Internetverbindung, um die App zu nutzen?</h3>
+                <p>Nein. Nachdem du die App und ihre Inhalte einmalig heruntergeladen hast, funktioniert alles zu 100%
+                    offline. Ideal zum Lernen im Flugzeug oder unterwegs.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Werden meine Lerndaten in der Cloud gespeichert?</h3>
+                <p>Nein. Wir legen großen Wert auf deine Privatsphäre. Dein gesamter Lernfortschritt wird ausschließlich
+                    lokal auf deinem eigenen Gerät gespeichert.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>An wen kann ich mich bei einem Fehler wenden?</h3>
+                <p>Bitte kontaktiere unseren Support per E-Mail und beschreibe kurz, auf welchem Gerät der Fehler
+                    aufgetreten ist. Wir kümmern uns umgehend darum.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Einfach Chinesisch lernen. Alle Rechte vorbehalten.</p>
+    </footer>
+
+</body>
+
+</html>
